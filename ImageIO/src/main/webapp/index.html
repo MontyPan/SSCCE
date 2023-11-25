@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script>
+function submit() {
+	xhr("jpg");
+	xhr("png");
+}
+
+function xhr(type) {
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function() {
+		show(type, xhr.responseText);
+	};
+	xhr.open("post", "image/" + type);
+	xhr.send(location.href + "/" + document.getElementById("name").value);
+}
+function show(id, result) {
+	document.getElementById(id).src = result;
+}
+
+</script>
+</head>
+
+<body>
+炸點描述：
+<ul>
+	<li>在 Spring Boot 下，將「trash.png」轉成 <code>BufferedImage</code> 後做
+		<code>ImageIO.write(BufferedImage, "jpg", ByteArrayOutputStream)</code>，
+		ByteArrayOutputStream 會完全沒有任何 byte
+	</li>
+	<li>純 Java App 執行則都沒有問題</li>
+</ul>
+程式碼參見：<code>us.dontcareabout.sscce.ImageIO.ImageAPI</code>
+
+<hr>
+<select id="name">
+	<option>trash.png</option>
+	<option>shock.jpg</option>
+</select>
+<input type="submit" onclick="submit()">
+<hr>
+<table>
+	<tr>
+		<th>by JPG</th>
+		<th>by PNG</th>
+	</tr>
+	<tr>
+		<td><img id="jpg" width="300px"></td>
+		<td><img id="png" width="300px"></td>
+	</tr>
+</table>
+</body>
+</html>
