@@ -1,2 +1,2 @@
-# SSCCE
+![](https://raw.githubusercontent.com/MontyPan/SSCCE/master/NotDeadYet.jpg)
 還沒死啊？沒死過來寫個 SSCCE...
